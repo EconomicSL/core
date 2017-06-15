@@ -50,9 +50,11 @@ object Price {
 
   implicit def mkOrderingOps(lhs: Price): PriceOrdering.Ops = PriceOrdering.mkOrderingOps(lhs)
 
-  val MaxValue = Price(Long.MaxValue)
+  val zero: Price = Price(0L)
 
-  val MinValue = Price(0)  // this is not restricting quantities to be non-negative!
+  val MaxValue: Price = Price(Long.MaxValue)
+
+  val MinValue: Price = zero  // this is not restricting quantities to be non-negative!
 
 }
 
