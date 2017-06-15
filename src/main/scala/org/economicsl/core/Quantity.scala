@@ -49,7 +49,13 @@ object Quantity {
 
   implicit def mkOrderingOps(lhs: Quantity): QuantityOrdering.Ops = QuantityOrdering.mkOrderingOps(lhs)
 
+  val single: Quantity = Quantity(1L)
+
+  val zero: Quantity = Quantity(0L)
+
   val MaxValue: Quantity = Quantity(Long.MaxValue)
+
+  val MinValue: Quantity = Quantity(Long.MinValue)
 
 }
 
