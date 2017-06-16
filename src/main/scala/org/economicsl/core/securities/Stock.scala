@@ -13,34 +13,33 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package org.economicsl.core
-
+package org.economicsl.core.securities
 import java.util.UUID
 
 import play.api.libs.json.{JsValue, Json, Writes}
 
 
-/** Trait used to indicate that an object can be traded via an auction.
+/** Base trait for modeling stock.
   *
+  * @note See [[https://en.wikipedia.org/wiki/Stock wikipedia entry]] for details.
   * @author davidrpugh
   * @since 0.1.0
   */
-trait Tradable extends Serializable {
+trait Stock extends Security with Fungible {
 
-  /** Each `Tradable` must defined a unique identifier.
-    *
-    * @note Depending on desired usage, this identifier might be unique for each instance of some type of `Tradable`,
-    *       or all instances of a particular type of `Tradable` might share a common identifier.
-    */
-  def uuid: UUID
+  /** Sub-types of `Stock` should be uniquely identified by their respective ticker symbols. */
+  def ticker: String
+
+  lazy val uuid: UUID = UUID.nameUUIDFromBytes(ticker.getBytes)
 
 }
 
 
-object Tradable {
+object Stock {
 
-  implicit def writes[T <: Tradable]: Writes[T] = new Writes[T] {
+  implicit def writes[T <: Stock]: Writes[T] = new Writes[T] {
     def writes(o: T): JsValue = Json.obj(
+      "ticker" -> o.ticker,
       "uuid" -> o.uuid
     )
   }
