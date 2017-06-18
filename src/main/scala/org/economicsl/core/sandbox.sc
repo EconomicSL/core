@@ -3,24 +3,24 @@ import org.economicsl.core.prices.{Numeraire, Price}
 import squants.{Dimension, UnitOfMeasure}
 
 
-class Apple(value: Double)(implicit unit: UnitOfMeasure[Apple]) extends Numeraire[Apple](value)(unit) {
+class Sugar(value: Double)(implicit unit: UnitOfMeasure[Sugar]) extends Numeraire[Sugar](value)(unit) {
 
-  def dimension: Dimension[Apple] = ???
+  def dimension: Dimension[Sugar] = ???
 
 }
 
 
-object Apple {
+object Sugar {
 
-  def apply(value: Double)(implicit unit: UnitOfMeasure[Apple]): Apple = new Apple(value)(unit)
+  def apply(value: Double)(implicit unit: UnitOfMeasure[Sugar]): Sugar = new Sugar(value)(unit)
 
-  implicit val unit: UnitOfMeasure[Apple] = new UnitOfMeasure[Apple] {
+  implicit val unit: UnitOfMeasure[Sugar] = new UnitOfMeasure[Sugar] {
 
-    def apply[N](n: N)(implicit num: Numeric[N]): Apple = Apple(num.toDouble(n))(this)
+    def apply[N](n: N)(implicit num: Numeric[N]): Sugar = Sugar(num.toDouble(n))(this)
 
     protected def converterFrom = ???
 
-    val symbol: String = "Apple"
+    val symbol: String = "Sugar"
 
     protected def converterTo = ???
 
@@ -30,22 +30,22 @@ object Apple {
 }
 
 
-case class Orange(value: Double)(implicit val unit: UnitOfMeasure[Orange]) extends Quantity[Orange] {
+case class Spice(value: Double)(implicit val unit: UnitOfMeasure[Spice]) extends Quantity[Spice] {
 
-  def dimension: Dimension[Orange] = ???
+  def dimension: Dimension[Spice] = ???
 
 }
 
 
-object Orange {
+object Spice {
 
-  implicit val unit: UnitOfMeasure[Orange] = new UnitOfMeasure[Orange] {
+  implicit val unit: UnitOfMeasure[Spice] = new UnitOfMeasure[Spice] {
 
-    def apply[N](n: N)(implicit num: Numeric[N]): Orange = Orange(num.toDouble(n))(this)
+    def apply[N](n: N)(implicit num: Numeric[N]): Spice = Spice(num.toDouble(n))(this)
 
     protected def converterFrom = ???
 
-    val symbol: String = "Orange"
+    val symbol: String = "Spice"
 
     protected def converterTo = ???
 
@@ -54,10 +54,10 @@ object Orange {
 
 }
 
-val apple = Apple(20)
+val sugar = Sugar(20)
 
-val orange = Orange(10)
+val spice = Spice(10)
 
-val price = Price(apple, orange)
+val price = Price(sugar, spice)
 
-val cost = price * Orange(30)
+val cost = price * Spice(30)
