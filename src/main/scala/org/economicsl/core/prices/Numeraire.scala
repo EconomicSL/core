@@ -1,7 +1,8 @@
 package org.economicsl.core.prices
 
+import org.economicsl.core.Quantity
 import play.api.libs.json.{Json, Writes}
-import squants.{Quantity, UnitOfMeasure}
+import squants.UnitOfMeasure
 
 
 /** Abstract class representing a numeraire.

@@ -1,5 +1,6 @@
+import org.economicsl.core.Quantity
 import org.economicsl.core.prices.{Numeraire, Price}
-import squants.{Dimension, Quantity, UnitOfMeasure}
+import squants.{Dimension, UnitOfMeasure}
 
 
 class Apple(value: Double)(implicit unit: UnitOfMeasure[Apple]) extends Numeraire[Apple](value)(unit) {

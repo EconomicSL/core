@@ -15,8 +15,9 @@ limitations under the License.
 */
 package org.economicsl.core.prices
 
+import org.economicsl.core.Quantity
 import play.api.libs.json.{Json, Writes}
-import squants.{Quantity, Ratio}
+import squants.Ratio
 
 
 /** Class representing a price.
