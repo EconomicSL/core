@@ -13,11 +13,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package org.economicsl
+package org.economicsl.core
 
 
-package object core {
+/** Package containing various components that might be useful across ESL libraries.
+  *
+  * @author davidrpugh
+  * @since 0.1.0
+  */
+package object util {
 
-  type Currency = Long
+  /** Type alias to improve readability when working with timestamps. */
+  type Timestamp = Long
 
 }
