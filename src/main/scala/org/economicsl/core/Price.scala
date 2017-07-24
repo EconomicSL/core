@@ -29,6 +29,10 @@ case class Price(value: Long) extends AnyVal {
     Price(value + that.value)
   }
 
+  def - (that: Price): Price = {
+    Price(value - that.value)
+  }
+
   def * (quantity: Quantity): Currency = {
     value * quantity.value
   }
@@ -54,7 +58,7 @@ object Price {
 
   val MaxValue: Price = Price(Long.MaxValue)
 
-  val MinValue: Price = zero  // this is not restricting quantities to be non-negative!
+  val MinValue: Price = zero  // this is not restricting prices to be non-negative!
 
 }
 
