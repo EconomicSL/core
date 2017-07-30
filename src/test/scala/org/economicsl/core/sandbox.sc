@@ -1,3 +1,4 @@
+import org.economicsl.core.Price
 import org.economicsl.core.securities.Stock
 import play.api.libs.json.Json
 
@@ -30,4 +31,7 @@ val apples = Set(apple1, apple2)
 
 
 
+val limit = Price(100)
+limit.isMultipleOf(10)
 
+limit.isMultipleOf(9)
