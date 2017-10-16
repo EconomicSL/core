@@ -18,7 +18,7 @@ package org.economicsl.core.util
 import java.util.UUID
 
 
-/** Mixin trait providing timestamping functionality.
+/** Mixin trait for generating universal unique identifiers (UUID) functionality.
   *
   * @author davidrpugh
   * @since 0.1.0
@@ -33,7 +33,7 @@ trait UUIDGenerator {
     UUID.fromString(name)
   }
 
-  protected def random(): UUID = {
+  protected def randomUUID(): UUID = {
     UUID.randomUUID()
   }
 

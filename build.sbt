@@ -7,7 +7,7 @@ lazy val commonSettings = Seq(
   organizationName := "EconomicSL",
   organizationHomepage := Some(url("https://economicsl.github.io/")),
   libraryDependencies ++= Seq(
-    "com.typesafe.play" %% "play-json" % "2.6.0-RC2",
+    "com.typesafe.play" %% "play-json" % "2.6.6",
     "org.scalactic" %% "scalactic" % "3.0.1"
   ),
   scalacOptions ++= Seq(
