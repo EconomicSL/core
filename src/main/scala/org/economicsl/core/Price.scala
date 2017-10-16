@@ -37,6 +37,10 @@ case class Price(value: Long) extends AnyVal {
     value * quantity.value
   }
 
+  def / (x: Long): Price = {
+    Price(value / x)
+  }
+
   def isMultipleOf(tickSize: Currency): Boolean = {
     value % tickSize == 0
   }
