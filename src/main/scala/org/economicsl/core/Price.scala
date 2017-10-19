@@ -33,6 +33,10 @@ case class Price(value: Long) extends AnyVal {
     Price(value - that.value)
   }
 
+  def * (x: Long): Price = {
+    Price(value * x)
+  }
+
   def * (quantity: Quantity): Currency = {
     value * quantity.value
   }
@@ -62,11 +66,21 @@ object Price {
 
   implicit def mkOrderingOps(lhs: Price): PriceOrdering.Ops = PriceOrdering.mkOrderingOps(lhs)
 
-  val zero: Price = Price(0L)
+  val Zero: Price = Price(0L)
 
   val MaxValue: Price = Price(Long.MaxValue)
 
-  val MinValue: Price = zero  // this is not restricting prices to be non-negative!
+  val MinValue: Price = Price(1L)
+
+  /** Computes a price that is the largest multiple of a tick size less than some upper bound. */
+  def largestMultipleOf(tickSize: Currency, lessThan: Price): Price = {
+    (lessThan / tickSize) * tickSize
+  }
+
+  /** Computes a price that is the smallest multiple of a tick size greater than some lower bound. */
+  def smallestMultipleOf(tickSize: Currency, greaterThan: Price): Price = {
+    ((greaterThan / tickSize) + MinValue) * tickSize
+  }
 
 }
 
